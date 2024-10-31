@@ -1,0 +1,5 @@
+package org.generation.universe.model;
+
+public class Order {
+
+}

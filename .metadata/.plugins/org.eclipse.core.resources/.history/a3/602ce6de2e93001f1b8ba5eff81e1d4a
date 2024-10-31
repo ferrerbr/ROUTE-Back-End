@@ -1,0 +1,131 @@
+package org.generation.universe.model;
+
+import java.math.BigDecimal;
+import java.sql.Date;
+import java.util.Arrays;
+import java.util.Objects;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
+
+
+@Entity
+@Table(name = "orders")
+public class Order {
+	//atributos
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long id;
+	@Column(name = "fecha_orden", length = 15, nullable = false, unique =false)
+	@Temporal(TemporalType.TIMESTAMP) //Me permite identificar campos del tipo Date  y puedo  definir si trabajo con fecha y hora o algun otro valor 
+	private Date fechadepedido;
+	@Column(name = "total", length = 15, nullable = false, unique =false)
+	private BigDecimal total;
+	@Column(name = "estatus", length = 15, nullable = false, unique =false)
+	private OrderStatus estatus;
+	@Column(name = "factura", length = 15, nullable = false, unique =false)
+	private byte[] fectura;
+	
+	
+	//Constructor lleno
+	public Order(long id, Date fechadepedido, BigDecimal total, OrderStatus estatus, byte[] fectura) {
+		super();
+		this.id = id;
+		this.fechadepedido = fechadepedido;
+		this.total = total;
+		this.estatus = estatus;
+		this.fectura = fectura;
+	}
+	
+	//Constructor vacio
+	public Order() {
+		
+	}
+	
+	//Getters y Setters
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public Date getFechadepedido() {
+		return fechadepedido;
+	}
+
+	public void setFechadepedido(Date fechadepedido) {
+		this.fechadepedido = fechadepedido;
+	}
+
+	public BigDecimal getTotal() {
+		return total;
+	}
+
+	public void setTotal(BigDecimal total) {
+		this.total = total;
+	}
+
+	public OrderStatus getEstatus() {
+		return estatus;
+	}
+
+	public void setEstatus(OrderStatus estatus) {
+		this.estatus = estatus;
+	}
+
+	public byte[] getFectura() {
+		return fectura;
+	}
+
+	public void setFectura(byte[] fectura) {
+		this.fectura = fectura;
+	}
+	
+	//Metodo to string
+
+	@Override
+	public String toString() {
+		return "Order [id=" + id + ", fechadepedido=" + fechadepedido + ", total=" + total + ", estatus=" + estatus
+				+ ", fectura=" + Arrays.toString(fectura) + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + Arrays.hashCode(fectura);
+		result = prime * result + Objects.hash(estatus, fechadepedido, id, total);
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Order other = (Order) obj;
+		return estatus == other.estatus && Objects.equals(fechadepedido, other.fechadepedido)
+				&& Arrays.equals(fectura, other.fectura) && id == other.id && Objects.equals(total, other.total);
+	}
+	
+	
+	
+	
+	
+	
+	
+
+}

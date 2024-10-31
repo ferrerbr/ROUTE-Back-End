@@ -1,0 +1,15 @@
+spring:
+ aplication:
+  name: universe
+  
+  
+ datasourse:
+  url: jdbc:mysql://localhost:3306:galaxies
+  username: root
+  password: 17Uach1997Gim22
+ 
+ 
+ jpa:
+  hibernate: 
+   ddl-auto: create
+ 

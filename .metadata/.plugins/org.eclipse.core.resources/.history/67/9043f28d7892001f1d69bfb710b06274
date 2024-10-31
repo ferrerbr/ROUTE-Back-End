@@ -1,0 +1,51 @@
+package org.generation.universe.service;
+
+import java.util.List;
+
+import org.generation.universe.exceptions.UserNotFoundException;
+import org.generation.universe.model.User;
+import org.generation.universe.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class UserService {
+	//Atributos
+	//Mandamos a llamar UserRepository
+	private  UserRepository userRepository;
+	
+	//Inyeccion de dependencias en el construcrtor
+	@Autowired
+	public UserService(UserRepository userRepository) {
+		this.userRepository = userRepository;
+	}
+	
+	//Metodo propios  de la clase
+	//Método para obtener todos los usuarios
+	public List<User> getAll(){
+		return userRepository.findAll(); // el metodo find All es un metodo de JpaRepositori que esta heredando en UserRepository
+		
+	}
+	
+	//Metodo para crear un nuevo usuario
+	public  User createUser(User newUser) {
+		return userRepository.save(newUser);
+	}
+	
+	//Metodo para eliminar un usuario mediante id
+	
+	public void deleteUser(Long id){
+		if (userRepository.existsById(id)) {
+			userRepository.deleteById(id);
+			//Eliminar
+			
+		}else {
+			//exception
+			throw new UserNotFoundException(id);
+		}
+		
+	}
+	
+	
+
+}

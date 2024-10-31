@@ -1,0 +1,5 @@
+package org.generation.universe.repository;
+
+public interface OrderRepository {
+
+}

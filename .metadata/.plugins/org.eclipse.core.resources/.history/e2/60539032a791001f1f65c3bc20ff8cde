@@ -1,0 +1,21 @@
+package org.generation.user.service;
+
+import java.util.ArrayList;
+
+import org.generation.user.model.User;
+import org.springframework.stereotype.Service;
+
+//Atoda clase service  tengo que agregarle una notacion que indicara  que actuara como Servicio
+
+@Service
+public class UserService {
+	
+	//Vamos a intaciar un ArrayList del tipo user para simular una base de datos(DB)
+	public final ArrayList <User>usuarios = new ArrayList <User>();
+	
+	//Método constructor
+	public UserService() {
+		//Instanciar objetos dentro del constructor
+	}
+
+}

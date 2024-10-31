@@ -1,0 +1,39 @@
+package org.generation.universe.controller;
+
+import java.util.List;
+
+import org.generation.universe.model.Order;
+import org.generation.universe.service.OrderService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping("/orders")
+public class OrderController {
+	private OrderService orderService;
+
+	@Autowired
+	public OrderController(OrderService orderService) {
+		this.orderService = orderService;
+	}
+	
+	@GetMapping("/ordenes")
+	public List<Order> getAll(){
+		return orderService.getAll();
+		}
+	
+	
+	@PostMapping
+	public Order newOrder (@RequestBody Order order) {
+		return orderService.newOrder(order);
+	}
+	
+	
+	
+	
+
+}

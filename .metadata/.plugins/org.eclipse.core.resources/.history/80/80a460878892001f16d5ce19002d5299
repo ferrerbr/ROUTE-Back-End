@@ -1,0 +1,7 @@
+package org.generation.universe.exceptions;
+
+//La clase recibe anotaciones que nos permite controlar  el metodo de la excepcion y aplicarlo  en metodos de tipo resposeEntity
+
+public class EmailNotFoundController {
+
+}
